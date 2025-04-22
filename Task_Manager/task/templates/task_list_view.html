@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body> 
+    <form>
+  
+    {% block content %}
+        <h2>Task List</h2>
+        <a href="{% url 'create_view' %}">+ Add New Task</a>
+        <ul>
+            {% for task in task %}
+             <li>
+                <strong>{{ task.title }}</strong> - {{ task.due_date }} 
+                {% if task.is_completed %}✅{% else %}❌{% endif %}
+                 <a href="{% url 'task_list_view' %}">list view</a>
+                 <a href="{% url 'update_view' task.id %}">Edit</a>
+                 <a href="{% url 'delete_view' task.id %}">Delete</a>
+            </li>
+           {% endfor %}
+        </ul>
+    {% endblock %}
+
+    </form>
+</body>
+</html>

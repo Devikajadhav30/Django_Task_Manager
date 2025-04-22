@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Update Task</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <label>Title:</label><br>
+        {{ form.title }}<br><br>
+
+        <label>Description:</label><br>
+        {{ form.description }}<br><br>
+
+        <label>Due Date:</label><br>
+        {{ form.due_date }}<br><br>
+
+        </label>
+        <label>Completed:</label>
+        {{ form.is_completed }}<br><br>
+
+        <button type="submit">Update</button>
+        <a href="{% url 'task_list_view' %}">Cancel</a>
+    </form>
+</body>
+</html>
